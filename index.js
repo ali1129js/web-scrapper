@@ -2,19 +2,30 @@
  * @Author: Ali
  * @Date:   2019-11-02T12:48:40+01:00
  * @Last modified by:   Ali
- * @Last modified time: 2019-11-02T13:01:21+01:00
+ * @Last modified time: 2019-11-02T14:46:04+01:00
  */
-const fetch = require('node-fetch');
 
-const url = 'https://www.imdb.com/find?s=tt&ttype=ft&ref_=fn_ft&q='
+const express = require('express');
+const scraper = require('./scraper');
+const app = express()
 
-function searchMovies(searchTerm) {
-  fetch(`${url}${searchTerm}`)
-  .then(res => res.text())
-  .then( body => {
-    console.log(body);
-  })
-}
+const PORT = process.env.PORT || 3000
+
+// /search/star wars
+
+app.get('/', (req,res) => {
+res.send('<h1>Hello</h1>')
+})
+
+app.get('/search/:title', (req, res) => {
+  scraper.searchMovies(req.params.title)
+  .then( movies => console.log(movies)
+  )
+  console.log(req.params.title);
+  console.log(movies);
+});
 
 
-searchMovies('star wars')
+app.listen(PORT,()=>{
+  console.log(` express server is running on port ${PORT}`);
+})
