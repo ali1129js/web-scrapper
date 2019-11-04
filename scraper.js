@@ -2,7 +2,7 @@
  * @Author: Ali
  * @Date:   2019-11-02T13:16:34+01:00
  * @Last modified by:   Ali
- * @Last modified time: 2019-11-02T14:30:55+01:00
+ * @Last modified time: 2019-11-04T08:09:46+01:00
  */
  const fetch = require('node-fetch');
  const cheerio = require('cheerio');
@@ -12,8 +12,8 @@
 
  function searchMovies(searchTerm) {
     console.log("Searching for :",searchTerm);
-
-   return fetch(`${url}${searchTerm}`)
+   return
+   fetch(`${url}${searchTerm}`)
    .then(res => res.text())
    .then( body => {
 
@@ -41,5 +41,7 @@
 
 
 /*
-
+const res = await fetch(url)
+const body = await res.text()
+console.log(body);
 */

@@ -2,7 +2,7 @@
  * @Author: Ali
  * @Date:   2019-11-02T12:48:40+01:00
  * @Last modified by:   Ali
- * @Last modified time: 2019-11-02T14:46:04+01:00
+ * @Last modified time: 2019-11-03T22:18:13+01:00
  */
 
 const express = require('express');
@@ -17,12 +17,12 @@ app.get('/', (req,res) => {
 res.send('<h1>Hello</h1>')
 })
 
-app.get('/search/:title', (req, res) => {
+app.get('/search/:title',  (req, res) => {
   scraper.searchMovies(req.params.title)
   .then( movies => console.log(movies)
   )
   console.log(req.params.title);
-  console.log(movies);
+  console.log(re);
 });
 
 
